@@ -1,0 +1,24 @@
+.product {
+  width: calc((100% - 32px) / 2);
+
+  > img {
+    max-width: 200px;
+    max-height: 200px;
+  }
+
+  > div {
+    max-width: 100%;
+  }
+}
+
+@media screen and (max-width: 985px) {
+  .product {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .product {
+    flex-direction: column;
+  }
+}

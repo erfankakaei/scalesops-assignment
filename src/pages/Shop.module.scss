@@ -1,0 +1,33 @@
+.shop {
+  padding: 32px;
+
+  .search-title {
+    white-space: nowrap;
+  }
+
+  .products-container {
+    gap: 24px 32px;
+  }
+}
+
+@media screen and (max-width: 985px) {
+  .shop {
+    padding: 24px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .shop {
+    padding: 16px;
+
+    .products-container {
+      gap: 16px 24px;
+    }
+
+    .count-and-reload {
+      flex-direction: column;
+      align-items: flex-start !important;
+      gap: 12px;
+    }
+  }
+}

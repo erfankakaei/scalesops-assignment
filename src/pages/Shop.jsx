@@ -1,14 +1,5 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
-import {
-  Alert,
-  Button,
-  Card,
-  CardHeader,
-  CardBody,
-  CardTitle,
-  CardText,
-  Input,
-} from "reactstrap";
+import { Alert, Button, Card, CardHeader, CardBody, CardTitle, CardText, Input } from "reactstrap";
 // *** Representational components
 // ** Page-sections
 import Search from "../components/representational/page-sections/shop/Search";
@@ -42,10 +33,7 @@ const Shop = () => {
   useEffect(fetchData, []);
   // ** Variables
   const filteredData = useMemo(
-    () =>
-      !searchPhrase
-        ? data
-        : data.filter((item) => item.title.startsWith(searchPhrase)),
+    () => (!searchPhrase ? data : data.filter((item) => item.title.startsWith(searchPhrase))),
     [data, searchPhrase],
   );
 

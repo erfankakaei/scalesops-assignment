@@ -6,13 +6,9 @@ import styles from "./styles/Content.module.scss";
 
 const Content = ({ filteredData, reload }) => (
   <>
-    <div
-      className={`${styles["count-and-reload"]} d-flex justify-content-between align-items-center`}
-    >
+    <div className={`${styles["count-and-reload"]} d-flex justify-content-between align-items-center`}>
       <CardText className={"m-0"}>
-        {filteredData.length
-          ? `Found ${filteredData.length} product(s):`
-          : "No products found"}
+        {filteredData.length ? `Found ${filteredData.length} product(s):` : "No products found"}
       </CardText>
       <Button color={"success"} onClick={reload}>
         Reload & clear filters

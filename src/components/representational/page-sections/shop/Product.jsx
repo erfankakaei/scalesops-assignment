@@ -1,5 +1,5 @@
 // *** Styles
-import styles from "./Product.module.scss";
+import styles from "./styles/Product.module.scss";
 
 const Product = ({ data }) => (
   <div

@@ -11,10 +11,10 @@ import {
 } from "reactstrap";
 // *** Representational components
 // ** Page-sections
+import Search from "../components/representational/page-sections/shop/Search";
+import Error from "../components/representational/page-sections/shop/Error";
 import Loading from "../components/representational/page-sections/shop/Loading";
-import Product from "../components/representational/page-sections/shop/Product";
-// ** Icons
-import { Error, Search } from "../components/representational/icons/index";
+import Content from "../components/representational/page-sections/shop/Content";
 // *** Icons
 import styles from "./Shop.module.scss";
 
@@ -56,57 +56,15 @@ const Shop = () => {
           <CardTitle className={"m-0"}>Welcome</CardTitle>
         </CardHeader>
 
-        <CardHeader className={"d-flex align-items-center gap-1"}>
-          <Search />
-          <CardTitle className={`${styles["search-title"]} m-0`}>
-            Search by title:
-          </CardTitle>
-          <Input
-            placeholder={"Search"}
-            value={searchPhrase}
-            onChange={(e) => setSearchPhrase(e.target.value)}
-          />
-        </CardHeader>
+        <Search searchPhrase={searchPhrase} setSearchPhrase={setSearchPhrase} />
 
         <CardBody>
           {error ? (
-            <Alert
-              color={"danger"}
-              className={"d-flex align-items-center gap-2 mb-0"}
-            >
-              <Error />
-              Failed to load data!
-              <Button color={"primary"} onClick={fetchData}>
-                Retry
-              </Button>
-            </Alert>
+            <Error retry={fetchData} />
           ) : isLoading ? (
             <Loading />
           ) : (
-            <>
-              <div
-                className={`${styles["count-and-reload"]} d-flex justify-content-between align-items-center`}
-              >
-                <CardText className={"m-0"}>
-                  {filteredData.length
-                    ? `Found ${filteredData.length} product(s):`
-                    : "No products found"}
-                </CardText>
-                <Button color={"success"} onClick={fetchData}>
-                  Reload & clear filters
-                </Button>
-              </div>
-
-              {filteredData.length ? (
-                <div
-                  className={`${styles["products-container"]} d-flex flex-wrap mt-4`}
-                >
-                  {filteredData.map((item) => (
-                    <Product key={item.id} data={item} />
-                  ))}
-                </div>
-              ) : null}
-            </>
+            <Content filteredData={filteredData} reload={fetchData} />
           )}
         </CardBody>
       </Card>
